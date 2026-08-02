@@ -233,7 +233,4 @@ class BossScraper(BaseScraper):
             logger.info(f"BOSS 直聘 Cookie 已保存，共 {len(cookie_list)} 条")
             return True
         except Exception as e:
-            logger.error(f"保存 BOSS 直聘 Cookie 失败: {e}")
-            return False
-
-    def get_cookies
+            logger.error(f
