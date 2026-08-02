@@ -239,4 +239,186 @@ class ZhaopinScraper(BaseScraper):
                             job.location = info_items[0].get_text(strip=True)
 
                         # 详情链接
-                        link_el = card.select_one("a[href*=\"zhaopin\"]") or card
+                        link_el = card.select_one("a[href*=\"zhaopin\"]") or card.select_one("a[href*=\"job\"]")
+                        if link_el and link_el.get("href"):
+                            href = link_el["href"]
+                            job.job_url = href if href.startswith("http") else f"https:{href}"
+                            # 从URL中提取岗位ID
+                            job_id = ""
+                            if job.job_url:
+                                m = re.search(r'jobs\.zhaopin\.com/([A-Z0-9]+)', job.job_url, re.I) or re.search(r'/job_detail/(\d+)', job.job_url)
+                                if m:
+                                    job_id = m.group(1)
+                            job.platform_job_id = job_id
+
+                        # 确保location字段包含搜索城市名（智联招聘location可能只有区名或错误字段）
+                        location_raw = job.location
+                        if city and location_raw and city not in location_raw:
+                            # 检查是否是有效的城市/区名（不是经验年限等）
+                            if not any(kw in location_raw for kw in ['经验', '学历', '大专', '本科', '硕士', '年']):
+                                job.location = f"{city}-{location_raw}"
+                            else:
+                                # 如果取到的不是地点信息，直接用城市名
+                                job.location = city
+
+                        if job.job_name:
+                            jobs.append(job)
+                    except Exception as e:
+                        logger.warning(f"解析智联招聘卡片失败: {e}")
+                        continue
+
+                logger.info(f"智联招聘解析完成: {len(jobs)} 个岗位")
+                await context.close()
+                await browser.close()
+
+        except Exception as e:
+            logger.error("[智联] 搜索异常: type={}, msg={}", type(e).__name__, str(e))
+            logger.error("[智联] 异常堆栈:\n{}", traceback.format_exc())
+
+        return jobs
+
+    async def parse_job_detail(self, url: str) -> Optional[JobItem]:
+        logger.warning("智联招聘详情解析未实现")
+        return None
+
+    async def send_greeting(self, job_url: str, greeting_message: str) -> Dict:
+        """向智联招聘岗位发送打招呼消息"""
+        logger.info("[智联][投递] === 开始投递 ===")
+        logger.info("[智联][投递] url={}, message_len={}", job_url[:80], len(greeting_message))
+        logger.debug("[智联][投递] 消息内容: {}", greeting_message[:100])
+        
+        if not job_url:
+            logger.error("[智联][投递] 岗位URL为空，终止")
+            return {"success": False, "message": "岗位URL为空"}
+
+        try:
+            # 步骤1: 打开浏览器并加载Cookie
+            logger.info("[智联][投递] 步骤1/4: 启动 Playwright 浏览器并加载Cookie...")
+            t1_start = time.time()
+            async with async_playwright() as p:
+                browser = await p.chromium.launch(
+                    headless=True,
+                    args=["--disable-blink-features=AutomationControlled", "--no-sandbox"]
+                )
+                context = await browser.new_context(
+                    viewport={"width": 1920, "height": 1080},
+                    user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+                )
+                # 加载已保存的登录Cookie
+                if self.has_cookies():
+                    cookies = self.get_cookies()
+                    await context.add_cookies(cookies)
+                    logger.info("[智联][投递] 已加载 {} 条Cookie", len(cookies))
+
+                page = await context.new_page()
+                t1_end = time.time()
+                logger.info("[智联][投递] 步骤1完成: 浏览器启动耗时={:.2f}s", t1_end - t1_start)
+
+                # 步骤2: 访问岗位详情页
+                logger.info("[智联][投递] 步骤2/4: 访问岗位详情页...")
+                t2_start = time.time()
+                await page.goto(job_url, wait_until="domcontentloaded", timeout=15000)
+                await page.wait_for_timeout(3000)
+                t2_end = time.time()
+
+                # 检查是否登录
+                current_url = page.url
+                if "login" in current_url.lower() or "passport" in current_url.lower():
+                    logger.warning("[智联][投递] 步骤2失败: 未登录, 重定向到={}", current_url[:80])
+                    await browser.close()
+                    return {"success": False, "message": "智联招聘未登录，Cookie可能已过期，请重新登录"}
+                logger.info("[智联][投递] 步骤2完成: 页面加载正常, 耗时={:.2f}s", t2_end - t2_start)
+
+                # 步骤3: 查找并点击沟通/投递按钮（原生DOM遍历）
+                logger.info("[智联][投递] 步骤3/4: 查找沟通/投递按钮(原生DOM遍历)...")
+                t3_start = time.time()
+                apply_clicked = await page.evaluate("""
+                    () => {
+                        // 原生DOM遍历，搜索投递关键词
+                        const keywords = ['立即沟通', '立即投递', '投递简历', '聊一聊', '沟通', '申请职位'];
+                        const elements = document.querySelectorAll('button, a, [role="button"], span');
+                        for (const el of elements) {
+                            const text = (el.textContent || '').trim();
+                            for (const kw of keywords) {
+                                if (text === kw || text.includes(kw)) {
+                                    if (el.offsetParent !== null) {
+                                        el.click();
+                                        return 'clicked: ' + kw + ' on <' + el.tagName + '>';
+                                    }
+                                }
+                            }
+                        }
+                        // 兜底：class前缀匹配
+                        const classSelectors = ['[class*="btn-chat"]', '[class*="apply-btn"]', '[class*="btn-apply"]'];
+                        for (const sel of classSelectors) {
+                            const btn = document.querySelector(sel);
+                            if (btn && btn.offsetParent !== null) {
+                                btn.click();
+                                return sel;
+                            }
+                        }
+                        return null;
+                    }
+                """)
+
+                if apply_clicked:
+                    await page.wait_for_timeout(2000)
+                    t3_end = time.time()
+                    logger.info("[智联][投递] 步骤3完成: 点击成功({}), 耗时={:.2f}s",
+                               apply_clicked, t3_end - t3_start)
+                    
+                    # 步骤4: 输入消息并发送
+                    logger.info("[智联][投递] 步骤4/4: 输入消息文本...")
+                    t4_start = time.time()
+                    has_input = await page.evaluate("""
+                        (msg) => {
+                            const inputs = document.querySelectorAll('textarea, input[type="text"]');
+                            for (const inp of inputs) {
+                                if (inp.offsetParent !== null) {
+                                    inp.value = msg;
+                                    inp.dispatchEvent(new Event('input', { bubbles: true }));
+                                    return true;
+                                }
+                            }
+                            return false;
+                        }
+                    """, greeting_message)
+                    
+                    if has_input:
+                        logger.info("[智联][投递] 消息已填入输入框")
+                        await page.wait_for_timeout(500)
+                        
+                        # 点击发送按钮
+                        submit_clicked = await page.evaluate("""
+                            () => {
+                                const btns = document.querySelectorAll('button, a, span');
+                                for (const btn of btns) {
+                                    const text = btn.textContent || '';
+                                    if ((text.includes('发送') || text.includes('提交') || text.includes('确定')) && btn.offsetParent !== null) {
+                                        btn.click();
+                                        return text.trim();
+                                    }
+                                }
+                                return null;
+                            }
+                        """)
+                        await page.wait_for_timeout(2000)
+                        t4_end = time.time()
+                        logger.info("[智联][投递] 步骤4完成: 提交按钮={}, 耗时={:.2f}s", 
+                                   submit_clicked or "未找到", t4_end - t4_start)
+                    else:
+                        t4_end = time.time()
+                        logger.warning("[智联][投递] 步骤4未找到输入框, 耗时={:.2f}s", t4_end - t4_start)
+                    
+                    await browser.close()
+                    logger.info("[智联][投递] === 投递成功 ===")
+                    return {"success": True, "message": "沟通消息已发送"}
+                else:
+                    logger.warning("[智联][投递] 步骤3失败: 未找到沟通/投递按钮（可能已沟通过或页面结构变更）")
+                    await browser.close()
+                    return {"success": False, "message": "未找到沟通按钮，可能已沟通过或需要手动操作"}
+                
+        except Exception as e:
+            logger.error("[智联][投递] === 投递异常 ===: type={}, msg={}", type(e).__name__, str(e))
+            logger.error("[智联][投递] 堆栈: {}", traceback.format_exc())
+            return {"success": False, "message": f"投递异常: {str(e)}"}
