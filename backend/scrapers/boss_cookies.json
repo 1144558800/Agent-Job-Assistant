@@ -1,0 +1,52 @@
+[
+  {
+    "name": "__trackId",
+    "value": "0",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "redirect_url",
+    "value": "",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "wd_guid",
+    "value": "ca7b57d2-443b-4bc8-b109-dee2fb81d2c0",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__tea_guid",
+    "value": "f0ad42c5-21b9-4538-9c7b-adb2cc2b8f7d",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_gen_tt",
+    "value": "devilryuan01",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  }
+]
