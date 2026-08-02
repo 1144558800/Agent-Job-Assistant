@@ -1,0 +1,162 @@
+[
+  {
+    "name": "acw_tc",
+    "value": "0000000017849573735936800e4d8d36f7413e030674458a78e137048dcefb",
+    "domain": "www.liepin.com",
+    "path": "/",
+    "expires": 1784959173.083472,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "XSRF-TOKEN",
+    "value": "CLfc_XFGR4iwkHm5c5LRZw",
+    "domain": ".liepin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__gc_id",
+    "value": "1f13b04dfe364c49b8d51ca46ca3835a",
+    "domain": ".liepin.com",
+    "path": "/",
+    "expires": 1819517373.083806,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "HMACCOUNT_BFESS",
+    "value": "D979890BD0D83373",
+    "domain": ".hm.baidu.com",
+    "path": "/",
+    "expires": 1819517373.803815,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_ga_54YTJKWN86",
+    "value": "GS2.1.s1784957373$o1$g0$t1784957373$j60$l0$h0",
+    "domain": ".liepin.com",
+    "path": "/",
+    "expires": 1819517373.819338,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_ga",
+    "value": "GA1.1.1734776216.1784957374",
+    "domain": ".liepin.com",
+    "path": "/",
+    "expires": 1819517373.820443,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__uuid",
+    "value": "1784957374248.34",
+    "domain": ".liepin.com",
+    "path": "/",
+    "expires": 1819517374.248813,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__sessionId",
+    "value": "1784957374254.08",
+    "domain": ".liepin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "acw_tc",
+    "value": "0000000017849573748242600e2371c967fdfd369b9645752705cc3cf39f1f",
+    "domain": "feim.liepin.com",
+    "path": "/",
+    "expires": 1784959174.263386,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "Hm_lvt_a2647413544f5a04f00da7eee0d5e200",
+    "value": "1784957374",
+    "domain": ".liepin.com",
+    "path": "/",
+    "expires": 1816493374,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "Hm_lpvt_a2647413544f5a04f00da7eee0d5e200",
+    "value": "1784957374",
+    "domain": ".liepin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "HMACCOUNT",
+    "value": "D979890BD0D83373",
+    "domain": ".liepin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "acw_tc",
+    "value": "0000000017849573748736269e0b89298c224e16d5f486bd8c142fbfd3ce4e",
+    "domain": "api-c.liepin.com",
+    "path": "/",
+    "expires": 1784959174.317078,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "acw_tc",
+    "value": "0000000017849573748844415e67db7afcaf9e188934e744efdde0f3852c3d",
+    "domain": "api-wanda.liepin.com",
+    "path": "/",
+    "expires": 1784959174.325511,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__session_seq",
+    "value": "2",
+    "domain": ".liepin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__tlg_event_seq",
+    "value": "6",
+    "domain": ".liepin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  }
+]

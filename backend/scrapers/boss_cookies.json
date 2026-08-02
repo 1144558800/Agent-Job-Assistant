@@ -1,0 +1,152 @@
+[
+  {
+    "name": "lastCity",
+    "value": "101190900",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": 1816425635.872531,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "isOHPC",
+    "value": "1",
+    "domain": "www.zhipin.com",
+    "path": "/",
+    "expires": 1787481648.39987,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "ab_guid",
+    "value": "c25c7ed9-5dae-45da-9d42-2a909f5e6919",
+    "domain": "www.zhipin.com",
+    "path": "/",
+    "expires": 1819358533.846896,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "wbg",
+    "value": "0",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": 1785610800.749537,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__g",
+    "value": "-",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "Hm_lvt_194df3105ad7148dcf2b98a91b5e727a",
+    "value": "1784798883,1784799081,1784824215,1784889637",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": 1816425636,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a",
+    "value": "1784889637",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "HMACCOUNT",
+    "value": "14B2521591041BAC",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__l",
+    "value": "l=%2Fwww.zhipin.com%2Fweb%2Fgeek%2Fjob&s=3&friend_source=0",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__zp_stoken__",
+    "value": "c819gw4XCncK4UTtcCA52WU9NenB%2BVsK3fE5tacKtV2jCrMKQS1JQUlbCmsK3wrzCscKvwqHCmU%2FCkG%2FDsVvCn0rCnGjCjmnCkMK0w6LCmMKqwpXCgsKFwpbCmMKcwpDDrsKZw5FNw4TCucKHwrDDp8KMw6rCh8KJwpzDjsO1w6rCrcOTw7DEpcKfxKfCp8OIw7DEosKTw4zCmcShwqfEksKZxJTCqcOOxafEl8OyxLPCuMOtwr%2FCjTEpwrXDv8S2xLfEtsS0w57DtsS3xLbEtMK%2BxLbEt8S2w5jDvsOOxLfEtsS0xL3EtsS3xLbEtDo%2FMTEzNCc%2BwqdVOyc2NzU%2FwrwmwrJDwrQ3wrMXwr4%2FwrIWOhIfXAABDwkCDwcPBwgPUQpZDQABDAUIAwcBWAgBAQwGUA0nJjMDwrFdAcK4wognwrfDnwt1AsOHW1pwGcKxfhQgMMKfNTk%2FwrbEtjI5NzE3NTQwFD0yOD4xMD04MCQxwrNVw4dYUnIQwrFmFTo3NzY3NShvMTA7OjAxMDk4PiUwOlwmPMKzw6DCv8OHMTA%3D",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": 1785120041,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "wt2",
+    "value": "Dj3EPWkkUKOCt-n8L1vk26YVYc2u33rlABCDhEwCeDAUmD229ujDCUH3p82GBUKtrj4yrCQNGu_t6izyjqn_ocw~~",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": 1785610800.749363,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "zp_at",
+    "value": "DpLWulpcWkXfzM1zHttF4Al6-G36XFz3Oh0q9RSAyh8~",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": 1785610800.749621,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__c",
+    "value": "1784889636",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__a",
+    "value": "97892205.1784798530.1784889264.1784889636.45.26.4.45",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": 1819449648.434141,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "bst",
+    "value": "V2R9IiF-X12lpsVtRuxxgeKCu47DrQxC8~|R9IiF-X12lpsVtRuxxgeKCu47DrVzSQ~",
+    "domain": ".zhipin.com",
+    "path": "/",
+    "expires": 1785610800.475267,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  }
+]
