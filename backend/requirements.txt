@@ -1,48 +1,33 @@
-# Web 框架
-fastapi>=0.109.0
-uvicorn[standard]>=0.27.0
-python-multipart>=0.0.6
-
-# AI / LangGraph
-openai>=1.12.0
-langgraph>=0.0.40
-langchain>=0.1.0
-langchain-core>=0.1.0
-
-# RAG / 向量数据库
-faiss-cpu>=1.7.4
-sentence-transformers>=2.2.0
-langchain-text-splitters>=0.0.1
-
-# 爬虫
-playwright>=1.41.0
-beautifulsoup4>=4.12.0
-requests>=2.31.0
-lxml>=5.0.0
-
-# 简历处理
-python-docx>=1.1.0
-PyMuPDF>=1.23.0
-reportlab>=4.0.0
-
-# 数据处理
-pandas>=2.1.0
-openpyxl>=3.1.0
-numpy>=1.24.0
-
-# 定时任务
-apscheduler>=3.10.0
-
-# 日志
-loguru>=0.7.0
-
-# 桌面自动化
-pyautogui>=0.9.54
-Pillow>=10.0.0
-pytesseract>=0.3.10
-
-# 工具
-python-dotenv>=1.0.0
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
 pydantic>=2.5.0
-httpx>=0.26.0
-aiofiles>=23.2.0
+python-multipart>=0.0.6
+httpx>=0.25.0
+beautifulsoup4>=4.12.0
+parsel>=1.8.0
+langchain>=0.3.0
+langchain-openai>=0.2.0
+langgraph>=0.2.0
+langgraph-checkpoint>=2.0.0
+numpy>=1.24.0
+openai>=1.6.0
+jieba>=0.42.0
+loguru>=0.7.0
+sentence-transformers>=2.2.0
+faiss-cpu>=1.7.0
+playwright>=1.40.0
+PyMuPDF>=1.23.0
+python-docx>=1.1.0
+reportlab>=4.0
+openpyxl>=3.1.0
+apscheduler>=3.10.0
+sse-starlette>=2.0.0
+python-dotenv>=1.0.0
+pyautogui>=0.9.0
+paddleocr>=2.7.0
+paddlepaddle>=2.6.0
+pytweening>=1.0.0
+pyperclip>=1.8.0
+psutil>=5.9.0
+pygetwindow>=0.0.9
+pywin32>=306

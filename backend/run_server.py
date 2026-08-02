@@ -1,19 +1,13 @@
 # -*- coding: utf-8 -*-
-"""
-后端服务启动脚本
-"""
-import os
-import sys
+"""启动服务器脚本"""
 import uvicorn
+from config import SERVER_HOST, SERVER_PORT
 
 if __name__ == "__main__":
-    # 确保当前目录在路径中
-    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
     uvicorn.run(
         "main:app",
-        host="0.0.0.0",
-        port=8001,
+        host=SERVER_HOST,
+        port=SERVER_PORT,
         reload=False,
         log_level="info",
     )
