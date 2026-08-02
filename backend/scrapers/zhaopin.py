@@ -122,11 +122,13 @@ class ZhaopinScraper(BaseScraper):
                     if "login" not in current_url.lower() and "passport" not in current_url.lower():
                         has_user = await page.evaluate("""
                             () => {
+                                // 方式1: 检查页面是否有已登录专属文字
                                 const bodyText = document.body.textContent || '';
                                 const loginKeywords = ['退出登录', '我的简历', '我的收藏', '个人中心', '消息', '投递记录', '我的'];
                                 if (loginKeywords.some(k => bodyText.includes(k))) {
                                     return true;
                                 }
+                                // 方式2: 检查DOM元素，排除"登录/注册"按钮
                                 const userEls = document.querySelectorAll('[class*="user"], [class*="avatar"], [class*="header-user"], [class*="nickname"], [class*="personal"]');
                                 for (const el of userEls) {
                                     const text = el.textContent.trim();
@@ -148,6 +150,7 @@ class ZhaopinScraper(BaseScraper):
                     with open(self.cookie_file, "w", encoding="utf-8") as f:
                         json.dump(cookies, f, ensure_ascii=False, indent=2)
                     logger.info("[智联] 登录成功！Cookie已保存，共 {} 条。请关闭浏览器窗口...", len(cookies))
+                    # 等待用户手动关闭浏览器窗口
                     try:
                         while True:
                             await page.wait_for_timeout(1000)
@@ -331,6 +334,7 @@ class ZhaopinScraper(BaseScraper):
                 t3_start = time.time()
                 apply_clicked = await page.evaluate("""
                     () => {
+                        // 原生DOM遍历，搜索投递关键词
                         const keywords = ['立即沟通', '立即投递', '投递简历', '聊一聊', '沟通', '申请职位'];
                         const elements = document.querySelectorAll('button, a, [role="button"], span');
                         for (const el of elements) {
@@ -344,6 +348,7 @@ class ZhaopinScraper(BaseScraper):
                                 }
                             }
                         }
+                        // 兜底：class前缀匹配
                         const classSelectors = ['[class*="btn-chat"]', '[class*="apply-btn"]', '[class*="btn-apply"]'];
                         for (const sel of classSelectors) {
                             const btn = document.querySelector(sel);
