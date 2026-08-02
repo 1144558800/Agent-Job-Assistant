@@ -118,45 +118,5 @@
     "httpOnly": false,
     "secure": false,
     "sameSite": "Lax"
-  },
-  {
-    "name": "acw_tc",
-    "value": "0000000017849573748736269e0b89298c224e16d5f486bd8c142fbfd3ce4e",
-    "domain": "api-c.liepin.com",
-    "path": "/",
-    "expires": 1784959174.317078,
-    "httpOnly": true,
-    "secure": false,
-    "sameSite": "Lax"
-  },
-  {
-    "name": "acw_tc",
-    "value": "0000000017849573748844415e67db7afcaf9e188934e744efdde0f3852c3d",
-    "domain": "api-wanda.liepin.com",
-    "path": "/",
-    "expires": 1784959174.325511,
-    "httpOnly": true,
-    "secure": false,
-    "sameSite": "Lax"
-  },
-  {
-    "name": "__session_seq",
-    "value": "2",
-    "domain": ".liepin.com",
-    "path": "/",
-    "expires": -1,
-    "httpOnly": false,
-    "secure": false,
-    "sameSite": "Lax"
-  },
-  {
-    "name": "__tlg_event_seq",
-    "value": "6",
-    "domain": ".liepin.com",
-    "path": "/",
-    "expires": -1,
-    "httpOnly": false,
-    "secure": false,
-    "sameSite": "Lax"
   }
 ]
