@@ -86,7 +86,9 @@ def _extract_docx_segments(docx_path: str) -> Tuple[List[dict], str]:
     for seg in segments:
         labeled_parts.append(f"[{seg['marker']}] {seg['text']}")
 
-    labeled_text = "\n\n".join(labeled_parts)
+    labeled_text = "
+
+".join(labeled_parts)
 
     logger.info("docx 段提取完成(XML模式): {} 个段落段, {} 个表格段",
                 sum(1 for s in segments if s["type"] == "paragraph"),
@@ -136,7 +138,9 @@ def _ai_polish_segments(labeled_text: str, client, model: str, polish_focus: str
             model=model,
             messages=[
                 {"role": "system", "content": system_prompt},
-                {"role": "user", "content": f"请润色以下简历文本：\n\n{labeled_text}"}
+                {"role": "user", "content": f"请润色以下简历文本：
+
+{labeled_text}"}
             ],
             temperature=0.3,
             max_tokens=8000,
@@ -149,7 +153,8 @@ def _ai_polish_segments(labeled_text: str, client, model: str, polish_focus: str
         polished_segments = []
         seen_markers = set()
 
-        for line in raw_output.split('\n'):
+        for line in raw_output.split('
+'):
             line = line.strip()
             if not line:
                 continue
@@ -415,7 +420,9 @@ def _ai_polish_plain_text(resume_text: str, client, model: str, polish_focus: st
             model=model,
             messages=[
                 {"role": "system", "content": system_prompt},
-                {"role": "user", "content": f"请润色以下简历：\n\n{resume_text}"}
+                {"role": "user", "content": f"请润色以下简历：
+
+{resume_text}"}
             ],
             temperature=0.3,
             max_tokens=8000,
@@ -453,7 +460,8 @@ def generate_polished_docx(polished_text: str, output_path: str) -> str:
         "实习经历", "校园经历", "获奖情况", "荣誉奖项",
     ]
 
-    for line in polished_text.split('\n'):
+    for line in polished_text.split('
+'):
         line = line.strip()
         if not line:
             continue
@@ -505,7 +513,8 @@ def generate_polished_pdf(polished_text: str, output_path: str) -> str:
                                    spaceBefore=16, spaceAfter=8, textColor=HexColor('#1A56DB'))
 
     story = []
-    for line in polished_text.split('\n'):
+    for line in polished_text.split('
+'):
         line = line.strip()
         if not line:
             continue

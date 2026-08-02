@@ -21,7 +21,8 @@ def extract_text_from_pdf(file_path: str) -> Optional[str]:
         for page in doc:
             text_parts.append(page.get_text())
         doc.close()
-        full_text = "\n".join(text_parts).strip()
+        full_text = "
+".join(text_parts).strip()
         logger.info(f"PDF 解析完成: {file_path}, {len(full_text)} 字符")
         return full_text
     except Exception as e:
@@ -56,7 +57,8 @@ def _extract_docx_raw_xml_text(file_path: str) -> str:
             line = ''.join(parts).strip()
             if line:
                 paragraphs.append(line)
-        return "\n".join(paragraphs).strip()
+        return "
+".join(paragraphs).strip()
     except Exception as e:
         logger.error(f"解析 DOCX XML 失败: {e}")
         return ""
@@ -84,7 +86,8 @@ def extract_text_from_docx(file_path: str) -> Optional[str]:
                     txt = cell.text.strip()
                     if txt:
                         text_parts.append(txt)
-        full_text = "\n".join(text_parts).strip()
+        full_text = "
+".join(text_parts).strip()
         # 如果 python-docx 未能提取到文本，尝试直接解析 XML
         if not full_text:
             logger.warning(f"python-docx 提取文本为空，尝试直接解析 XML: {file_path}")

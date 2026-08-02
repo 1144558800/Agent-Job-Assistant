@@ -39,7 +39,9 @@ class ResumeMatcher:
                 model=self.qa_engine.model,
                 messages=[
                     {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": f"请解析以下简历内容：\n\n{resume_text}"}
+                    {"role": "user", "content": f"请解析以下简历内容：
+
+{resume_text}"}
                 ],
                 temperature=0.3,
                 max_tokens=2000
@@ -47,7 +49,9 @@ class ResumeMatcher:
             content = response.choices[0].message.content.strip()
             # 清理可能的 markdown 代码块标记
             if content.startswith("```"):
-                content = content.split("\n", 1)[1] if "\n" in content else content
+                content = content.split("
+", 1)[1] if "
+" in content else content
                 if "```" in content:
                     content = content.rsplit("```", 1)[0]
             return json.loads(content)
@@ -96,7 +100,11 @@ class ResumeMatcher:
                 model=self.qa_engine.model,
                 messages=[
                     {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": f"## 求职者简历信息\n{json.dumps(parsed, ensure_ascii=False, indent=2)}\n\n## 招聘岗位列表\n{jobs_summary}"}
+                    {"role": "user", "content": f"## 求职者简历信息
+{json.dumps(parsed, ensure_ascii=False, indent=2)}
+
+## 招聘岗位列表
+{jobs_summary}"}
                 ],
                 temperature=0.7,
                 max_tokens=4000,
@@ -127,7 +135,11 @@ class ResumeMatcher:
                 model=self.qa_engine.model,
                 messages=[
                     {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": f"## 简历信息\n{json.dumps(parsed, ensure_ascii=False, indent=2)}\n\n## {platform} 岗位列表\n{jobs_summary}"}
+                    {"role": "user", "content": f"## 简历信息
+{json.dumps(parsed, ensure_ascii=False, indent=2)}
+
+## {platform} 岗位列表
+{jobs_summary}"}
                 ],
                 temperature=0.7,
                 max_tokens=4000,
@@ -179,7 +191,11 @@ class ResumeMatcher:
                 model=self.qa_engine.model,
                 messages=[
                     {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": f"## 求职者简历信息\n{json.dumps(parsed, ensure_ascii=False, indent=2)}\n\n## 目标岗位信息\n{json.dumps(job, ensure_ascii=False, indent=2)}"}
+                    {"role": "user", "content": f"## 求职者简历信息
+{json.dumps(parsed, ensure_ascii=False, indent=2)}
+
+## 目标岗位信息
+{json.dumps(job, ensure_ascii=False, indent=2)}"}
                 ],
                 temperature=0.7,
                 max_tokens=4000,
@@ -195,24 +211,49 @@ class ResumeMatcher:
         parsed = self._parse_resume_with_ai(resume_text)
 
         system_prompt = (
-            "你是一位资深的招聘顾问和简历优化专家。请根据求职者的简历和目标岗位需求，生成针对性的增量补充内容。\n\n"
-            "重要原则：\n"
-            "1. 不要重写整份简历，只输出需要新增或修改的内容段落\n"
-            "2. 保持真实，不要编造经历，只能基于用户提供的信息\n"
-            "3. 如果用户提供了额外的项目经历或技能，将其写成可直接插入简历的段落\n"
-            "4. 优化表达方式，使描述更专业、更有说服力、更符合岗位关键词\n"
-            "5. 所有输出内容应为可直接插入简历的完整段落\n\n"
-            "关键要求：\n"
-            "- 首先仔细分析【原简历内容】，找出简历中已有的模块标题（如：个人技能、专业技能、项目经历、项目经验、工作经历、教育背景等）\n"
-            "- 每个增量内容必须用【模块：xxx】的格式标明它属于简历中的哪个模块，xxx必须是原简历中实际出现的模块名称\n"
-            "- 如果原简历中没有对应的模块名称，则新增一个合适的模块名称\n\n"
-            "请按以下格式输出增量内容，每个部分用清晰的标题分隔：\n\n"
-            "【模块：项目经历】\n"
-            "（这里输出应插入到「项目经历」模块下的内容，比如新增的项目描述）\n\n"
-            "【模块：专业技能】\n"
-            "（这里输出应插入到「专业技能」模块下的内容，比如补充的技能描述）\n\n"
-            "【模块：工作经历】\n"
-            "（这里输出应插入到「工作经历」模块下的内容，比如优化后的工作描述）\n\n"
+            "你是一位资深的招聘顾问和简历优化专家。请根据求职者的简历和目标岗位需求，生成针对性的增量补充内容。
+
+"
+            "重要原则：
+"
+            "1. 不要重写整份简历，只输出需要新增或修改的内容段落
+"
+            "2. 保持真实，不要编造经历，只能基于用户提供的信息
+"
+            "3. 如果用户提供了额外的项目经历或技能，将其写成可直接插入简历的段落
+"
+            "4. 优化表达方式，使描述更专业、更有说服力、更符合岗位关键词
+"
+            "5. 所有输出内容应为可直接插入简历的完整段落
+
+"
+            "关键要求：
+"
+            "- 首先仔细分析【原简历内容】，找出简历中已有的模块标题（如：个人技能、专业技能、项目经历、项目经验、工作经历、教育背景等）
+"
+            "- 每个增量内容必须用【模块：xxx】的格式标明它属于简历中的哪个模块，xxx必须是原简历中实际出现的模块名称
+"
+            "- 如果原简历中没有对应的模块名称，则新增一个合适的模块名称
+
+"
+            "请按以下格式输出增量内容，每个部分用清晰的标题分隔：
+
+"
+            "【模块：项目经历】
+"
+            "（这里输出应插入到「项目经历」模块下的内容，比如新增的项目描述）
+
+"
+            "【模块：专业技能】
+"
+            "（这里输出应插入到「专业技能」模块下的内容，比如补充的技能描述）
+
+"
+            "【模块：工作经历】
+"
+            "（这里输出应插入到「工作经历」模块下的内容，比如优化后的工作描述）
+
+"
             "注意：只输出增量内容，不要输出完整的简历，不要重复原简历已有内容。"
         )
 
@@ -221,7 +262,17 @@ class ResumeMatcher:
                 model=self.qa_engine.model,
                 messages=[
                     {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": f"## 原简历内容\n{resume_text}\n\n## 简历结构化信息\n{json.dumps(parsed, ensure_ascii=False, indent=2)}\n\n## 目标岗位要求\n{json.dumps(job, ensure_ascii=False, indent=2)}\n\n## 用户补充的项目经历和技能\n{user_input if user_input else '（无补充）'}"}
+                    {"role": "user", "content": f"## 原简历内容
+{resume_text}
+
+## 简历结构化信息
+{json.dumps(parsed, ensure_ascii=False, indent=2)}
+
+## 目标岗位要求
+{json.dumps(job, ensure_ascii=False, indent=2)}
+
+## 用户补充的项目经历和技能
+{user_input if user_input else '（无补充）'}"}
                 ],
                 temperature=0.5,
                 max_tokens=6000,
