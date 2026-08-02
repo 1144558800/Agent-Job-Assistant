@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# 虚拟环境
+venv/
+.venv/
+env/
+
+# 环境变量
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 数据文件
+*.db
+*.sqlite
+*.sqlite3
+data/faiss_index/
+data/schedules/*.json
+
+# 上传文件
+uploads/*
+!uploads/.gitkeep
+polished_resumes/*
+!polished_resumes/.gitkeep
+
+# 日志
+*.log
+logs/
+
+# 前端
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Cookie 文件
+*_cookies.json
+!backend/scrapers/boss_cookies.json
+!backend/scrapers/liepin_cookies.json
+!backend/scrapers/job51_cookies.json
+!backend/scrapers/zhaopin_cookies.json
+
+# Playwright
+playwright-browsers/
+
+# 图片
+screenshots/
+*.png
+!backend/agent/screenshots/
+
+# 临时文件
+*.tmp
+*.temp
