@@ -290,7 +290,7 @@ async def search_jobs(keyword: str, city: str, platforms: Optional[str] = None) 
     
     mgr = _get_scraper_manager()
     
-    # 平台名称映射（Agent可能传入的别名 -> 爬虫内部key）
+    # 平台名称映射（Agent可能传入的别名 → 爬虫内部key）
     PLATFORM_ALIAS_MAP = {
         "job51": "51job",
         "51job": "51job",
@@ -308,7 +308,7 @@ async def search_jobs(keyword: str, city: str, platforms: Optional[str] = None) 
     if platforms:
         raw_list = [p.strip() for p in platforms.split(",")]
         platform_list = [PLATFORM_ALIAS_MAP.get(p, p) for p in raw_list]
-        logger.info("[Tools][search_jobs] 原始平台: {} -> 映射后: {}", raw_list, platform_list)
+        logger.info("[Tools][search_jobs] 原始平台: {} → 映射后: {}", raw_list, platform_list)
     else:
         logger.info("[Tools][search_jobs] 未指定平台，将搜索全部4个平台")
     
@@ -1024,9 +1024,9 @@ async def schedule_search(keyword: str, city: str, cron_expression: str, platfor
         keyword: 搜索关键词
         city: 城市名称
         cron_expression: 定时表达式，如:
-            - "每天8点" -> 每天早上8:00执行
-            - "每小时" -> 每小时执行一次
-            - "每周一9点" -> 每周一早上9:00执行
+            - "每天8点" → 每天早上8:00执行
+            - "每小时" → 每小时执行一次
+            - "每周一9点" → 每周一早上9:00执行
             - 或直接提供 cron 表达式，如 "0 8 * * *"（每天早上8点）
         platforms: 可选，指定平台
     """
@@ -1344,7 +1344,4 @@ async def auto_apply_jobs(config: RunnableConfig, max_count: int = 5, match_thre
         if not scraper_key:
             return {
                 "platform": job.platform,
-                "job_name": job.job_name,
-                "company": job.company_name,
-                "match_score": round(score, 2),
-                "status": "failed
+                "
