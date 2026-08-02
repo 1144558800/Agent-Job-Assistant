@@ -1,0 +1,122 @@
+[
+  {
+    "name": "acw_tc",
+    "value": "0bdd34c417315049112522250e78e6129bc4fbdd64ef7ef2be0c9f263869a4",
+    "domain": "www.zhaopin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "at",
+    "value": "8ee1aa3455f148679ad5857edc9b5f25",
+    "domain": ".zhaopin.com",
+    "path": "/",
+    "expires": 1785049911,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "rt",
+    "value": "e9a7c773b8ca495c9b4ccfb9ca96b324",
+    "domain": ".zhaopin.com",
+    "path": "/",
+    "expires": 1785049911,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "sts_deviceid",
+    "value": "198b8e29185f43888e3b81ee1a0be51e",
+    "domain": ".zhaopin.com",
+    "path": "/",
+    "expires": 1785049911,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "urlfrom",
+    "value": "",
+    "domain": ".zhaopin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "pageCode",
+    "value": "0",
+    "domain": ".zhaopin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "LastCity",
+    "value": "%E5%8C%97%E4%BA%AC",
+    "domain": ".zhaopin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "x-zp-client-id",
+    "value": "58e9c6c7-7a0c-455c-84b3-ae7d9f36e223",
+    "domain": ".zhaopin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "gr_user_id",
+    "value": "53f303c4-2375-4e75-a2a0-15b5f93d40e9",
+    "domain": ".zhaopin.com",
+    "path": "/",
+    "expires": 1785049912.41765,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "ZF_SEARCH_INDEX",
+    "value": "",
+    "domain": ".zhaopin.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_uab_collina",
+    "value": "175049936523015824095164",
+    "domain": ".zhaopin.com",
+    "path": "/",
+    "expires": 1785049913,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "ZP_OLD_VISITOR_DEVICE_ID",
+    "value": "198b8e29185f43888e3b81ee1a0be51e_1750499323322",
+    "domain": ".zhaopin.com",
+    "path": "/",
+    "expires": 1786502466.308056,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  }
+]
